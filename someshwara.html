@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SOMESHWARA GOLD WORKS</title>
+    <link rel="stylesheet" href="someshwara.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gidugu&family=NTR&family=Ramabhadra&family=Sree+Krushnadevaraya&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="sname">
+        <img src="../someshwara/shivalogo.png" alt="Logo" width="30" height="30">
+        సోమేశ్వర గోల్డ్ వర్క్స్
+    </div>
+    <h3 id="enter-prices">ఈరోజు ధరలు ENTER చెయ్యండి</h3>
+    <form id="price-form">
+        <label for="gold-old">బంగారం పాత తులం :</label>
+        <input type="text" id="gold-old" name="gold-old"><br><br>
+
+        <label for="gold-new">బంగారం కొత్త తులం :</label>
+        <input type="text" id="gold-new" name="gold-new"><br><br>
+
+        <label for="silver-old">వెండి పాత తులం :</label>
+        <input type="text" id="silver-old" name="silver-old"><br><br>
+
+        <label for="silver-new">వెండి కొత్త తులం :</label>
+        <input type="text" id="silver-new" name="silver-new"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div class="output-container" id="output" style="display: none;">
+
+        <img id="result-image" src="" alt="Result Image" width="300" height="300">
+        <p id="gold-old-value"></p>
+        <p id="gold-new-value"></p>
+        <p id="silver-old-value"></p>
+        <p id="silver-new-value"></p>
+        <p id="time"></p>
+        <p id="date"></p>
+    </div>
+
+    <script>
+        document.getElementById("price-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var goldOld = document.getElementById("gold-old").value;
+            var goldNew = document.getElementById("gold-new").value;
+            var silverOld = document.getElementById("silver-old").value;
+            var silverNew = document.getElementById("silver-new").value;
+
+
+            var resultImage = document.getElementById("result-image");
+            resultImage.src = "../someshwara/defaultimg.jpg"; // Double backslashes for file path
+            document.getElementById("gold-old-value").textContent = goldOld;
+            document.getElementById("gold-new-value").textContent = goldNew;
+            document.getElementById("silver-old-value").textContent = silverOld;
+            document.getElementById("silver-new-value").textContent = silverNew;
+
+            var currentDate = new Date();
+
+            var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' +
+                ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
+                currentDate.getFullYear();
+
+            var currentHours = currentDate.getHours() % 12 || 12;
+            var formattedTime = currentHours + ':' + ('0' + currentDate.getMinutes()).slice(-2) +
+                ' ' + (currentDate.getHours() >= 12 ? 'PM' : 'AM');
+            document.getElementById("time").textContent = formattedTime;
+            document.getElementById("date").textContent = formattedDate;
+            var outputContainer = document.getElementById("output");
+            outputContainer.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>
