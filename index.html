@@ -14,7 +14,7 @@
 
 <body>
     <div class="sname">
-        <img src="../someshwara/shivalogo.png" alt="Logo" width="30" height="30">
+        <img src="../paan/shivalogo.png" alt="Logo" width="30" height="30">
         సోమేశ్వర గోల్డ్ వర్క్స్
     </div>
     <h3 id="enter-prices">ఈరోజు ధరలు ENTER చెయ్యండి</h3>
@@ -52,10 +52,12 @@
             var goldNew = document.getElementById("gold-new").value;
             var silverOld = document.getElementById("silver-old").value;
             var silverNew = document.getElementById("silver-new").value;
+            var kiran = document.querySelector("#time");
+            var kumar = document.querySelector("#date");
 
 
             var resultImage = document.getElementById("result-image");
-            resultImage.src = "../someshwara/defaultimg.jpg"; // Double backslashes for file path
+            resultImage.src = "../paan/defaultimg.jpg"; // Double backslashes for file path
             document.getElementById("gold-old-value").textContent = goldOld;
             document.getElementById("gold-new-value").textContent = goldNew;
             document.getElementById("silver-old-value").textContent = silverOld;
@@ -66,14 +68,20 @@
             var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' +
                 ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
                 currentDate.getFullYear();
-
-            var currentHours = currentDate.getHours() % 12 || 12;
+            
+            var currentHours =currentDate.getHours() % 12 || 12;
             var formattedTime = currentHours + ':' + ('0' + currentDate.getMinutes()).slice(-2) +
                 ' ' + (currentDate.getHours() >= 12 ? 'PM' : 'AM');
             document.getElementById("time").textContent = formattedTime;
             document.getElementById("date").textContent = formattedDate;
             var outputContainer = document.getElementById("output");
             outputContainer.style.display = "block";
+            if(currentHours > 9){
+                kiran.style.fontSize="8px";
+                kiran.style.top="80px";
+                kumar.style.fontSize="8px";
+                kumar.style.top="80px";
+            }
         });
     </script>
 </body>
